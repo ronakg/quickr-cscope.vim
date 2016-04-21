@@ -1,7 +1,7 @@
-" vim-quick-cscope: For superfast Cscope results navigation using quickfix window
-" Maintainer:       Ronak Gandhi <https://github.com/ronakg>
-" Version:          0.5
-" Website:          https://github.com/ronakg/vim-quick-cscope
+" quick-cscope.vim:   For superfast Cscope results navigation using quickfix window
+" Maintainer:         Ronak Gandhi <https://github.com/ronakg>
+" Version:            0.5
+" Website:            https://github.com/ronakg/vim-quick-cscope
 
 " Autoload the cscope database
 function! s:add_cscope_db()
@@ -18,8 +18,8 @@ function! s:add_cscope_db()
     endif
 endfunction
 
-" Fancy CscopeQuery function {{
-function! CscopeQuery(str, query)
+" Fancy quick_cscope function {{
+function! quick_cscope(str, query)
     " Close any open quickfix windows
     cclose
 
@@ -48,13 +48,13 @@ if has("cscope")
     " Definition
     nnoremap <leader>g :cs find g <cword><CR>
     " Callers
-    nnoremap <leader>c :call CscopeQuery(expand("<cword>"), "c")<CR>
+    nnoremap <leader>c :call quick_cscope(expand("<cword>"), "c")<CR>
     " Symbols
-    nnoremap <leader>s :call CscopeQuery(expand("<cword>"), "s")<CR>
+    nnoremap <leader>s :call quick_cscope(expand("<cword>"), "s")<CR>
     " File
-    nnoremap <leader>f :call CscopeQuery(expand("<cfile>:t"), "f")<CR>
+    nnoremap <leader>f :call quick_cscope(expand("<cfile>:t"), "f")<CR>
     " Files including this file
-    nnoremap <leader>i :call CscopeQuery(expand("<cfile>:t"), "i")<CR>
+    nnoremap <leader>i :call quick_cscope(expand("<cfile>:t"), "i")<CR>
     nnoremap <leader>t :pop<CR>
     " Don't open the cscope result list of any of the following queries
     set cscopequickfix=s-,c-,i-,t-,e-,f-
