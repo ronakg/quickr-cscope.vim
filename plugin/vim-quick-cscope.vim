@@ -1,7 +1,7 @@
-" VimQuickCscope:   For superfast Cscope results navigation using quickfix window
+" vim-quick-cscope: For superfast Cscope results navigation using quickfix window
 " Maintainer:       Ronak Gandhi <https://github.com/ronakg>
 " Version:          0.5
-" Website:          https://github.com/ronakg/VimQuickCscope
+" Website:          https://github.com/ronakg/vim-quick-cscope
 
 " Autoload the cscope database
 function! s:add_cscope_db()
