@@ -1,6 +1,6 @@
 " quick-cscope.vim:   For superfast Cscope results navigation using quickfix window
 " Maintainer:         Ronak Gandhi <https://github.com/ronakg>
-" Version:            0.5
+" Version:            1.0
 " Website:            https://github.com/ronakg/vim-quick-cscope
 
 " Setup {{
@@ -62,6 +62,19 @@ if g:vqc_autoload_db
     call s:autoload_db()
 endif
 
+" s:get_visual_selection {{
+" http://stackoverflow.com/a/6271254/777247
+function! s:get_visual_selection()
+  " Why is this not a built-in Vim script function?!
+  let [lnum1, col1] = getpos("'<")[1:2]
+  let [lnum2, col2] = getpos("'>")[1:2]
+  let lines = getline(lnum1, lnum2)
+  let lines[-1] = lines[-1][: col2 - (&selection == 'inclusive' ? 1 : 2)]
+  let lines[0] = lines[0][col1 - 1:]
+  return join(lines, "\n")
+endfunction
+" }}
+
 " Plug mappings {{
 nnoremap <silent> <plug>vim_quick_cscope_global :cs find g <cword><CR>
 nnoremap <silent> <plug>vim_quick_cscope_symbols :call <SID>quick_cscope(expand("<cword>"), "s")<CR>
@@ -69,6 +82,7 @@ nnoremap <silent> <plug>vim_quick_cscope_callers :call <SID>quick_cscope(expand(
 nnoremap <silent> <plug>vim_quick_cscope_files :call <SID>quick_cscope(expand("<cfile>:t"), "f")<CR>
 nnoremap <silent> <plug>vim_quick_cscope_includes :call <SID>quick_cscope(expand("<cfile>:t"), "i")<CR>
 nnoremap <silent> <plug>vim_quick_cscope_text :call <SID>quick_cscope(expand("<cword>"), "t")<CR>
+vnoremap <silent> <plug>vim_quick_cscope_text :call <SID>quick_cscope(<SID>get_visual_selection(), "t")<CR>
 nnoremap <silent> <plug>vim_quick_cscope_functions :call <SID>quick_cscope(expand("<cword>"), "d")<CR>
 nnoremap <silent> <plug>vim_quick_cscope_egrep :call <SID>quick_cscope(input('Enter egrep pattern: '), "e")<CR>
 " }}
@@ -80,6 +94,7 @@ if g:vqc_default_maps
     nmap <leader>f <plug>vim_quick_cscope_files
     nmap <leader>i <plug>vim_quick_cscope_includes
     nmap <leader>t <plug>vim_quick_cscope_text
+    vmap <leader>t <plug>vim_quick_cscope_text
     nmap <leader>e <plug>vim_quick_cscope_egrep
     nmap <leader>d <plug>vim_quick_cscope_functions
 endif
