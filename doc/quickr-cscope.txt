@@ -9,7 +9,6 @@ Help on using quickr-cscope                                   *quickr-cscope*
 
 1. Introduction                         |quickr-cscope-intro|
 2. Configuration                        |quickr-cscope-configuration|
-3. Frequently Asked Questions           |quickr-cscope-faq|
 
 ==============================================================================
 1. INTRODUCTION                                         *quickr-cscope-intro*
