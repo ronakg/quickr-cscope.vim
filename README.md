@@ -1,4 +1,4 @@
-# quick-cscope.vim
+# quickr-cscope.vim
 Vim plugin for super fast Cscope results navigation using quickfix window.
 
 ## License
