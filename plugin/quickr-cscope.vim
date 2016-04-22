@@ -32,6 +32,9 @@ function! s:autoload_db()
     if !empty(l:db)
         silent cs reset
         silent! execute 'cs add' l:db
+        return 1
+    else
+        return 0
     endif
 endfunction
 " }}
@@ -58,7 +61,9 @@ endfunction
 " }}
 
 if g:quickr_cscope_autoload_db
-    call s:autoload_db()
+    if s:autoload_db() == 0
+        finish
+    endif
 endif
 
 " s:get_visual_selection {{
