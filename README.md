@@ -44,23 +44,14 @@ If you want to use your own key mappings, you can disable the default key mappin
 
 Use following `<plug>`s to your own liking:
 
-**`<plug>quickr_cscope_symbols`**
-
-**`<plug>quickr_cscope_global`**
-
-**`<plug>quickr_cscope_callers`**
-
-**`<plug>quickr_cscope_symbols`**
-
-**`<plug>quickr_cscope_files`**
-
-**`<plug>quickr_cscope_includes`**
-
-**`<plug>quickr_cscope_text`**
-
-**`<plug>quickr_cscope_egrep`**
-
-**`<plug>quickr_cscope_functions`**
+    <plug>quickr_cscope_symbols
+    <plug>quickr_cscope_global
+    <plug>quickr_cscope_callers
+    <plug>quickr_cscope_files
+    <plug>quickr_cscope_includes
+    <plug>quickr_cscope_text
+    <plug>quickr_cscope_egrep
+    <plug>quickr_cscope_functions
 
 For example:
 
