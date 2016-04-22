@@ -20,8 +20,10 @@ shown in a |quickfix| window ready for faster navigation.
 
 * Quickly search for symbol, function name, file name under the cursor
 * Quickly search for visualy selected text
-* Search results are shown in |quickfix| window, which is way more flexible for navigation compared to Cscope's fixed list
-* Search term can be navigated using |n| and |N| in |quickfix| window for faster movement
+* Search results are shown in |quickfix| window, which is way more flexible
+  for navigation compared to Cscope's fixed list
+* Search term can be navigated using |n| and |N| in |quickfix| window for
+  faster movement
 * Find the Cscope database and load automatically on startup
 
 ==============================================================================
@@ -30,8 +32,8 @@ shown in a |quickfix| window ready for faster navigation.
 The following aspects of quickr-cscope's behavior are configurable using the
 following options:
 
-|'g:quickr_cscope_keymaps'|          Use default key mappings
-|'g:quickr_cscope_autoload_db'|      Automatic search and load of Cscope database
+|'g:quickr_cscope_keymaps'|        Use default key mappings
+|'g:quickr_cscope_autoload_db'|    Automatic search and load of Cscope database
 
 ------------------------------------------------------------------------------
                                                    *'g:quickr_cscope_keymaps'*
@@ -50,9 +52,11 @@ Default key mappings are as follows:
     <leader>c: Search for all callers of the function name under the cursor
     <leader>f: Search for all files matching filename under the cursor
     <leader>i: Search for all files including filename under the cursor
-    <leader>t: Search for text matching word under the cursor/visualy selected text
+    <leader>t: Search for text matching word under the cursor/visualy selected
+               text
     <leader>e: Enter an egrep patter for searching
-    <leader>d: Search all the functions called by funtion name under the cursor
+    <leader>d: Search all the functions called by funtion name under the
+               cursor
 <
 
 If you decide to not use default key mappings, custom key mappings can be
@@ -83,5 +87,3 @@ disable this feature of the plugin by adding following to your |vimrc|.
     let g:quickr_cscope_autoload_db=0
 <
 ------------------------------------------------------------------------------
-
-vim:tw=78:et:ft=help:norl:
