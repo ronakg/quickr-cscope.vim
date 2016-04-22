@@ -52,9 +52,8 @@ function! s:quick_cscope(str, query)
     " Open quickfix window
     cwindow
 
-    " Store the query string as search pattern for easy navigation
-    " using n and N
-    let @/ = a:str
+    " Search for the query string for easy navigation using n and N in quickfix
+    execute "normal /".a:str."\<CR>"
 endfunction
 " }}
 
