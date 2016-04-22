@@ -43,8 +43,8 @@ function! s:quick_cscope(str, query)
 
     " If the buffer that cscope jumped to is not same as current file, close the buffer
     let l:cur_file_name=@%
-    echo "Searching for ".a:str." ..."
-    execute "silent! cs! find ".a:query." ".a:str
+    echo "Searching for: ".a:str
+    silent! execute "cs find ".a:query." ".a:str
     if l:cur_file_name != @%
         bd
     endif
