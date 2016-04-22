@@ -41,6 +41,8 @@ endfunction
 
 " s:quick_cscope {{
 function! s:quick_cscope(str, query)
+    " Mark this position
+    execute "normal mc"
     " Close any open quickfix windows
     cclose
 
@@ -50,6 +52,9 @@ function! s:quick_cscope(str, query)
     silent! execute "cs find ".a:query." ".a:str
     if l:cur_file_name != @%
         bd
+    else
+        " Go back to where the command was issued
+        execute "normal `c"
     endif
 
     " Open quickfix window
