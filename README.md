@@ -2,28 +2,39 @@
 Vim plugin for super fast Cscope results navigation using quickfix window.
 
 ## Features
-`quickr-cscope.vim` provides faster access to [Cscope](http://cscope.sourceforge.net/) database search queries within Vim. Each type of Cscope query is just a keystroke away. Results are shown in a quickfix window ready for faster navigation. Paired with excellent [quickfix-reflector.vim](https://github.com/stefandtw/quickfix-reflector.vim) plugin, `quickr-cscope.vim` is a powerful tool for project navigation and refactoring. Biggest advantage of using this plugin is, it prevents the quickfix to jump to first result automatically. Thus preventing it to spoil your open buffer list.
+`quickr-cscope.vim` provides faster access to
+[Cscope](http://cscope.sourceforge.net/) database search queries within Vim.
+Each type of Cscope query is just a keystroke away. Results are shown in a
+quickfix window ready for faster navigation. Paired with excellent
+[quickfix-reflector.vim](https://github.com/stefandtw/quickfix-reflector.vim)
+plugin, `quickr-cscope.vim` is a powerful tool for project navigation and
+refactoring. Biggest advantage of using this plugin is, it prevents the
+quickfix to jump to first result automatically. Thus preventing it to spoil
+your open buffer list.
 
 * Quickly search for symbol, function name, file name under the cursor
 * Quickly search for visualy selected text
-* Search results are shown in quickfix window, which is way more flexible for navigation compared to Cscope's fixed list
-* Search term can be navigated using `n` and `N` in quickfix window for faster movement
+* Search results are shown in quickfix window, which is way more flexible for
+  navigation compared to Cscope's fixed list
+* Search term can be navigated using `n` and `N` in quickfix window for faster
+  movement
 * Find the Cscope database and load automatically on startup
 
 ## Installation
 
-This plugin follows the standard runtime path structure, and as such it can be installed with a variety of plugin managers:
+This plugin follows the standard runtime path structure, and as such it can be
+installed with a variety of plugin managers:
 
 *  [Pathogen](https://github.com/tpope/vim-pathogen)
-  *  `git clone https://github.com/ronakg/quickr-cscope ~/.vim/bundle/quickr-cscope`
+  - `git clone https://github.com/ronakg/quickr-cscope ~/.vim/bundle/quickr-cscope`
 *  [NeoBundle](https://github.com/Shougo/neobundle.vim)
-  *  `NeoBundle 'ronakg/quickr-cscope'`
+  - `NeoBundle 'ronakg/quickr-cscope'`
 *  [Vundle](https://github.com/gmarik/vundle)
-  *  `Plugin 'ronakg/quickr-cscope'`
+  - `Plugin 'ronakg/quickr-cscope'`
 *  [Plug](https://github.com/junegunn/vim-plug)
-  *  `Plug 'ronakg/quickr-cscope'`
+  - `Plug 'ronakg/quickr-cscope'`
 *  Manual
-  *  copy all of the files into your `~/.vim` directory
+  - copy all of the files into your `~/.vim` directory
 
 ## Default Keymaps
 
@@ -41,7 +52,8 @@ This plugin follows the standard runtime path structure, and as such it can be i
 ## Customization
 
 ### Disable default key mappings
-If you want to use your own key mappings, you can disable the default key mappings by adding follwing to your `~/.vimrc` file.
+If you want to use your own key mappings, you can disable the default key
+mappings by adding follwing to your `~/.vimrc` file.
 
 ```vim
 let g:quickr_cscope_keymaps=0
@@ -52,24 +64,25 @@ let g:quickr_cscope_keymaps=0
 Use following `<plug>`s to your own liking:
 
 ```vim
-<plug>quickr_cscope_symbols
-<plug>quickr_cscope_global
-<plug>quickr_cscope_callers
-<plug>quickr_cscope_files
-<plug>quickr_cscope_includes
-<plug>quickr_cscope_text
-<plug>quickr_cscope_egrep
-<plug>quickr_cscope_functions
+<plug>(quickr_cscope_symbols)
+<plug>(quickr_cscope_global)
+<plug>(quickr_cscope_callers)
+<plug>(quickr_cscope_files)
+<plug>(quickr_cscope_includes)
+<plug>(quickr_cscope_text)
+<plug>(quickr_cscope_egrep)
+<plug>(quickr_cscope_functions)
 ```
 
 For example:
 
 ```vim
-nmap <C-s> <plug>quickr_cscope_symbols
+nmap <C-s> <plug>(quickr_cscope_symbols)
 ```
 
 ### Disable automatic search and load of cscope database
-If you're already using another Cscope plugin that loads the database, you can disable this feature of the plugin by adding following to your `~/.vimrc`.
+If you're already using another Cscope plugin that loads the database, you can
+disable this feature of the plugin by adding following to your `~/.vimrc`.
 
 ```vim
 let g:quickr_cscope_autoload_db=0

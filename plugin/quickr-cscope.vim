@@ -80,27 +80,27 @@ endfunction
 " }}
 
 " Plug mappings {{
-nnoremap <silent> <plug>quickr_cscope_global :cs find g <cword><CR>
-nnoremap <silent> <plug>quickr_cscope_symbols :call <SID>quick_cscope(expand("<cword>"), "s")<CR>
-nnoremap <silent> <plug>quickr_cscope_callers :call <SID>quick_cscope(expand("<cword>"), "c")<CR>
-nnoremap <silent> <plug>quickr_cscope_files :call <SID>quick_cscope(expand("<cfile>:t"), "f")<CR>
-nnoremap <silent> <plug>quickr_cscope_includes :call <SID>quick_cscope(expand("<cfile>:t"), "i")<CR>
-nnoremap <silent> <plug>quickr_cscope_text :call <SID>quick_cscope(expand("<cword>"), "t")<CR>
-vnoremap <silent> <plug>quickr_cscope_text :call <SID>quick_cscope(<SID>get_visual_selection(), "t")<CR>
-nnoremap <silent> <plug>quickr_cscope_functions :call <SID>quick_cscope(expand("<cword>"), "d")<CR>
-nnoremap <silent> <plug>quickr_cscope_egrep :call <SID>quick_cscope(input('Enter egrep pattern: '), "e")<CR>
+nnoremap <silent> <plug>(quickr_cscope_global) :cs find g <cword><CR>
+nnoremap <silent> <plug>(quickr_cscope_symbols) :call <SID>quick_cscope(expand("<cword>"), "s")<CR>
+nnoremap <silent> <plug>(quickr_cscope_callers) :call <SID>quick_cscope(expand("<cword>"), "c")<CR>
+nnoremap <silent> <plug>(quickr_cscope_files) :call <SID>quick_cscope(expand("<cfile>:t"), "f")<CR>
+nnoremap <silent> <plug>(quickr_cscope_includes) :call <SID>quick_cscope(expand("<cfile>:t"), "i")<CR>
+nnoremap <silent> <plug>(quickr_cscope_text) :call <SID>quick_cscope(expand("<cword>"), "t")<CR>
+vnoremap <silent> <plug>(quickr_cscope_text) :call <SID>quick_cscope(<SID>get_visual_selection(), "t")<CR>
+nnoremap <silent> <plug>(quickr_cscope_functions) :call <SID>quick_cscope(expand("<cword>"), "d")<CR>
+nnoremap <silent> <plug>(quickr_cscope_egrep) :call <SID>quick_cscope(input('Enter egrep pattern: '), "e")<CR>
 " }}
 
 if g:quickr_cscope_keymaps
-    nmap <leader>g <plug>quickr_cscope_global
-    nmap <leader>c <plug>quickr_cscope_callers
-    nmap <leader>s <plug>quickr_cscope_symbols
-    nmap <leader>f <plug>quickr_cscope_files
-    nmap <leader>i <plug>quickr_cscope_includes
-    nmap <leader>t <plug>quickr_cscope_text
-    vmap <leader>t <plug>quickr_cscope_text
-    nmap <leader>e <plug>quickr_cscope_egrep
-    nmap <leader>d <plug>quickr_cscope_functions
+    nmap <leader>g <plug>(quickr_cscope_global)
+    nmap <leader>c <plug>(quickr_cscope_callers)
+    nmap <leader>s <plug>(quickr_cscope_symbols)
+    nmap <leader>f <plug>(quickr_cscope_files)
+    nmap <leader>i <plug>(quickr_cscope_includes)
+    nmap <leader>t <plug>(quickr_cscope_text)
+    vmap <leader>t <plug>(quickr_cscope_text)
+    nmap <leader>e <plug>(quickr_cscope_egrep)
+    nmap <leader>d <plug>(quickr_cscope_functions)
 endif
 
 " Use quickfix window for cscope results. Clear previous results before the search.
