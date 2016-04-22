@@ -56,7 +56,7 @@ If you want to use your own key mappings, you can disable the default key
 mappings by adding follwing to your `~/.vimrc` file.
 
 ```vim
-let g:quickr_cscope_keymaps=0
+let g:quickr_cscope_keymaps = 0
 ```
 
 ### Define custom key mappings
@@ -85,7 +85,7 @@ If you're already using another Cscope plugin that loads the database, you can
 disable this feature of the plugin by adding following to your `~/.vimrc`.
 
 ```vim
-let g:quickr_cscope_autoload_db=0
+let g:quickr_cscope_autoload_db = 0
 ```
 
 ## License
