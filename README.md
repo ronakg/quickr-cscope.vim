@@ -5,6 +5,7 @@ Vim plugin for super fast Cscope results navigation using quickfix window.
 * Quickly search for symbol, function name, file name under the cursor
 * Quickly search for visualy selected text
 * Search results are shown in quickfix window, which is way more flexible for navigation compared to Cscope's fixed list
+* Search term can be navigated using `n` and `N` in quickfix window for faster movement
 * Find the Cscope database and load automatically on startup
 
 ## Installation
