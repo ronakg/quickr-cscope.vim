@@ -2,6 +2,8 @@
 Vim plugin for super fast Cscope results navigation using quickfix window.
 
 ## Features
+`quickr-cscope.vim` provides faster access to [Cscope](http://cscope.sourceforge.net/) database search queries within Vim. Each type of Cscope query is just a keystroke away. Results are shown in a quickfix window ready for faster navigation. Paired with excellent [quickfix-reflector.vim](https://github.com/stefandtw/quickfix-reflector.vim) plugin, `quickr-cscope.vim` is a powerful tool for project navigation and refactoring.
+
 * Quickly search for symbol, function name, file name under the cursor
 * Quickly search for visualy selected text
 * Search results are shown in quickfix window, which is way more flexible for navigation compared to Cscope's fixed list
