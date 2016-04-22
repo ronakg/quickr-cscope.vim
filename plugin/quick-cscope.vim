@@ -4,7 +4,7 @@
 " Website:            https://github.com/ronakg/vim-quick-cscope
 
 " Setup {{
-if exists("g:vim_quick_cscope_loaded") || !has("cscope")
+if exists("g:vim_quick_cscope_loaded") || !has("cscope") || !has("quickfix")
   finish
 endif
 let g:vim_quick_cscope_loaded = 1
@@ -100,7 +100,7 @@ if g:vqc_default_maps
 endif
 
 " Use quickfix window for cscope results. Clear previous results before the search.
-set cscopequickfix=s-,c-,i-,t-,e-,f-,d-
+set cscopequickfix=t-,c-,i-,s-,e-,f-,d-
 
 " Modeline and Notes {{
 " vim: set sw=4 ts=4 sts=4 et tw=99 foldmarker={{,}} foldlevel=10 foldlevelstart=10 foldmethod=marker:
