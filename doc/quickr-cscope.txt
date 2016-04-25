@@ -83,6 +83,16 @@ Default: 1                                                                  ~
 If you're already using another Cscope plugin that loads the database, you can
 disable this feature of the plugin by adding following to your |vimrc|.
 >
-    let g:quickr_cscope_autoload_db=0
+    let g:quickr_cscope_autoload_db = 0
+<
+------------------------------------------------------------------------------
+                                               *'g:quickr_cscope_use_qf_g'*
+Values: numeric                                                             ~
+Default: 0                                                                  ~
+
+By default results of query `g` are not shown in |quickfix| window. You can
+change this behavior by adding following to your |vimrc|.
+>
+    let g:quickr_cscope_use_qf_g = 1
 <
 ------------------------------------------------------------------------------
