@@ -93,12 +93,13 @@ let g:quickr_cscope_autoload_db = 0
 ## FAQ
 
 **Q**: When there are multiple matches for global definition, it doesn't open in quickfix window.
+
 **A**: Be default global definitions are not shown in quickfix window. This
        behavior can be set by setting `g:quickr_cscope_use_qf_g` to `1`.
 
-       ```vim
-       let g:quickr_cscope_use_qf_g = 1
-       ```
+```vim
+let g:quickr_cscope_use_qf_g = 1
+```
 
 ## License
 Copyright (c) Ronak Gandhi. Distributed under the same terms as Vim itself. See
