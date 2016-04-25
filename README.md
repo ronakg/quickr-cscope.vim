@@ -15,7 +15,7 @@ quickfix to jump to first result automatically. Thus preventing it to spoil
 your open buffer list.
 
 * Quickly search for symbol, function name, file name under the cursor
-* Quickly search for visualy selected text
+* Quickly search for visually selected text
 * Search results are shown in quickfix window, which is way more flexible for
   navigation compared to Cscope's fixed list
 * Search term can be navigated using `n` and `N` in quickfix window for faster
@@ -38,7 +38,7 @@ installed with a variety of plugin managers:
 *  Manual
   - copy all of the files into your `~/.vim` directory
 
-## Default Keymaps
+## Default Key maps
 
 ```vim
 <leader>s : Search for all symbol occurances of word under the cursor
@@ -55,7 +55,7 @@ installed with a variety of plugin managers:
 
 ### Disable default key mappings
 If you want to use your own key mappings, you can disable the default key
-mappings by adding follwing to your `~/.vimrc` file.
+mappings by adding following to your `~/.vimrc` file.
 
 ```vim
 let g:quickr_cscope_keymaps = 0
@@ -82,13 +82,23 @@ For example:
 nmap <C-s> <plug>(quickr_cscope_symbols)
 ```
 
-### Disable automatic search and load of cscope database
+### Disable automatic search and load of Cscope database
 If you're already using another Cscope plugin that loads the database, you can
 disable this feature of the plugin by adding following to your `~/.vimrc`.
 
 ```vim
 let g:quickr_cscope_autoload_db = 0
 ```
+
+## FAQ
+
+**Q**: When there are multiple matches for global definition, it doesn't open in quickfix window.
+**A**: Be default global definitions are not shown in quickfix window. This
+       behavior can be set by setting `g:quickr_cscope_use_qf_g` to `1`.
+
+       ```vim
+       let g:quickr_cscope_use_qf_g = 1
+       ```
 
 ## License
 Copyright (c) Ronak Gandhi. Distributed under the same terms as Vim itself. See
