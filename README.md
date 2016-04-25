@@ -92,10 +92,16 @@ let g:quickr_cscope_autoload_db = 0
 
 ## FAQ
 
+**Q**: I'm not able to use `Ctrl-T` to go back in tag stack like I used to before.
+
+**A**: When you use quickfix to view results of a Cscope query, those results
+are not passed to taglist. You need to use `Ctrl-O` (jumplist) to go back to
+where you were from a result.
+
 **Q**: When there are multiple matches for global definition, it doesn't open in quickfix window.
 
 **A**: Be default global definitions are not shown in quickfix window. This
-       behavior can be set by setting `g:quickr_cscope_use_qf_g` to `1`.
+behavior can be set by setting `g:quickr_cscope_use_qf_g` to `1`.
 
 ```vim
 let g:quickr_cscope_use_qf_g = 1

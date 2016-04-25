@@ -31,8 +31,9 @@ shown in a |quickfix| window ready for faster navigation.
 The following aspects of quickr-cscope's behavior are configurable using the
 following options:
 
-|'g:quickr_cscope_keymaps'|        Use default key mappings
-|'g:quickr_cscope_autoload_db'|    Automatic search and load of Cscope database
+|'g:quickr_cscope_keymaps'|       Use default key mappings
+|'g:quickr_cscope_autoload_db'|   Automatic search and load of Cscope database
+|g:quickr_cscope_use_qf_g|        Use quickfix for results of `g` query
 
 ------------------------------------------------------------------------------
                                                    *'g:quickr_cscope_keymaps'*
