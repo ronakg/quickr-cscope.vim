@@ -50,17 +50,21 @@ function! s:quickr_cscope(search_str, query)
     " Close any open quickfix windows
     cclose
 
+    call setqflist([])
+
     let l:cur_file_name=@%
     echo "Searching for: ".a:search_str
-    silent! execute "silent! cs find ".a:query." ".a:search_str
+    silent! execute "cs find ".a:query." ".a:search_str
 
-    if len(getqflist()) > 1
+    let l:n_results = len(getqflist())
+    echon " - Search returned ". l:n_results . " results."
+    if l:n_results > 1
         " If the buffer that cscope jumped to is not same as current file, close the buffer
         if l:cur_file_name != @%
             bd
         else
             " Go back to where the command was issued
-            execute "normal `c"
+            execute "normal! `c"
         endif
 
         " Open quickfix window
@@ -71,7 +75,6 @@ function! s:quickr_cscope(search_str, query)
             execute "normal /".a:search_str."\<CR>"
         endif
     endif
-
 endfunction
 " }}
 
