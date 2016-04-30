@@ -1,18 +1,18 @@
 " quick-cscope.vim:   For superfast Cscope results navigation using quickfix window
 " Maintainer:         Ronak Gandhi <https://github.com/ronakg>
 " Version:            1.0
-" Website:            https://github.com/ronakg/vim-quick-cscope
+" Website:            https://github.com/ronakg/quickr-cscope.vim
 
 " Setup {{
 if exists("g:quickr_cscope_loaded") || !has("cscope") || !has("quickfix")
-  finish
+    finish
 endif
 let g:quickr_cscope_loaded = 1
 " }}
 
 " Options {{
 if !exists("g:quickr_cscope_keymaps")
-  let g:quickr_cscope_keymaps = 1
+    let g:quickr_cscope_keymaps = 1
 endif
 
 if !exists("g:quickr_cscope_autoload_db")
