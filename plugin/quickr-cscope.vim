@@ -22,6 +22,10 @@ endif
 if !exists("g:quickr_cscope_use_qf_g")
     let g:quickr_cscope_use_qf_g = 0
 endif
+
+if !exists("g:quickr_cscope_prompt_length")
+    let g:quickr_cscope_prompt_length = 3
+endif
 " }}
 
 " s:autoload_db {{
@@ -44,7 +48,15 @@ endfunction
 " }}
 
 " s:quickr_cscope {{
-function! s:quickr_cscope(search_str, query)
+function! s:quickr_cscope(str, query)
+    if g:quickr_cscope_prompt_length > 0
+        if strlen(a:str) <= g:quickr_cscope_prompt_length
+            let l:search_term = input("Enter search term: ")
+        else
+            let l:search_term = a:str
+        endif
+    endif
+
     " Mark this position
     execute "normal mc"
     " Close any open quickfix windows
@@ -53,8 +65,8 @@ function! s:quickr_cscope(search_str, query)
     call setqflist([])
 
     let l:cur_file_name=@%
-    echo "Searching for: ".a:search_str
-    silent! execute "cs find ".a:query." ".a:search_str
+    echo "Searching for: ".l:search_term
+    silent! execute "cs find ".a:query." ".l:search_term
 
     let l:n_results = len(getqflist())
     echon " - Search returned ". l:n_results . " results."
@@ -72,7 +84,7 @@ function! s:quickr_cscope(search_str, query)
 
         " Search for the query string for easy navigation using n and N in quickfix
         if a:query != "f"
-            execute "normal /".a:search_str."\<CR>"
+            execute "normal /".l:search_term."\<CR>"
         endif
     endif
 endfunction
