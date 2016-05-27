@@ -49,9 +49,10 @@ endfunction
 
 " s:quickr_cscope {{
 function! s:quickr_cscope(str, query)
+    echohl Question
     if g:quickr_cscope_prompt_length > 0
         if strlen(a:str) <= g:quickr_cscope_prompt_length
-            let l:search_term = input("Enter search term: ")
+            let l:search_term = input("Enter search term: ", a:str)
         else
             let l:search_term = a:str
         endif
@@ -73,20 +74,23 @@ function! s:quickr_cscope(str, query)
     if l:n_results > 1
         " If the buffer that cscope jumped to is not same as current file, close the buffer
         if l:cur_file_name != @%
-            bd
+            " Go to previous buffer and delete the buffer from there, this maintains the split
+            " layout of the currently opened windows
+            bp | bd #
         else
             " Go back to where the command was issued
             execute "normal! `c"
         endif
 
         " Open quickfix window
-        cwindow
+        botright cwindow
 
         " Search for the query string for easy navigation using n and N in quickfix
         if a:query != "f"
             execute "normal /".l:search_term."\<CR>"
         endif
     endif
+    echohl None
 endfunction
 " }}
 
