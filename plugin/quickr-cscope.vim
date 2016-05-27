@@ -50,6 +50,12 @@ endfunction
 " s:quickr_cscope {{
 function! s:quickr_cscope(str, query)
     echohl Question
+
+    " Mark this position
+    execute "normal mY"
+    " Close any open quickfix windows
+    cclose
+
     if g:quickr_cscope_prompt_length > 0
         if strlen(a:str) <= g:quickr_cscope_prompt_length
             let l:search_term = input("Enter search term: ", a:str)
@@ -57,11 +63,6 @@ function! s:quickr_cscope(str, query)
             let l:search_term = a:str
         endif
     endif
-
-    " Mark this position
-    execute "normal mc"
-    " Close any open quickfix windows
-    cclose
 
     call setqflist([])
 
@@ -72,14 +73,13 @@ function! s:quickr_cscope(str, query)
     let l:n_results = len(getqflist())
     echon " - Search returned ". l:n_results . " results."
     if l:n_results > 1
+        " Go back to where the command was issued
+        execute "normal! `Y"
         " If the buffer that cscope jumped to is not same as current file, close the buffer
         if l:cur_file_name != @%
-            " Go to previous buffer and delete the buffer from there, this maintains the split
-            " layout of the currently opened windows
-            bp | bd #
-        else
-            " Go back to where the command was issued
-            execute "normal! `c"
+            " We just jumped back to where the command was issued from. So delete the previous
+            " buffer, which will the the buffer quickfix jumped to
+            bd #
         endif
 
         " Open quickfix window
