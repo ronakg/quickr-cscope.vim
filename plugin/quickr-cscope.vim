@@ -67,16 +67,16 @@ function! s:quickr_cscope(str, query)
     call setqflist([])
 
     let l:cur_file_name=@%
-    echo "Searching for: ".l:search_term
+    echon "Searching for: ".l:search_term
     silent! execute "cs find ".a:query." ".l:search_term
 
     let l:n_results = len(getqflist())
-    echon " - Search returned ". l:n_results . " results."
+    echon ". Search returned ". l:n_results . " results."
     if l:n_results > 1
-        " Go back to where the command was issued
-        execute "normal! `Y"
         " If the buffer that cscope jumped to is not same as current file, close the buffer
         if l:cur_file_name != @%
+            " Go back to where the command was issued
+            execute "normal! `Y"
             " We just jumped back to where the command was issued from. So delete the previous
             " buffer, which will the the buffer quickfix jumped to
             bd #
