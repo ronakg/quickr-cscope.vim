@@ -51,7 +51,7 @@ installed with a variety of plugin managers:
 <leader>d : Search all the functions called by funtion name under the cursor
 ```
 
-P.S.: `\` is the leader key by default, unless set explicitely otherwise.
+P.S.: `\` is the leader key by default. So the mappings are `\s`, `\g`, `\c`, etc. unless `<leader>` key is mapped to something else.
 
 ## Customization
 
