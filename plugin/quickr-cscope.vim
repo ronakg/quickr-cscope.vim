@@ -10,7 +10,19 @@ endif
 let g:quickr_cscope_loaded = 1
 " }}
 
+" s:debug_echo {{
+function! s:debug_echo(str)
+    if g:quickr_cscope_debug_mode
+        echom a:str
+    endif
+endfunction
+" }}
+
 " Options {{
+if !exists("g:quickr_cscope_debug_mode")
+    let g:quickr_cscope_debug_mode = 0
+endif
+
 if !exists("g:quickr_cscope_keymaps")
     let g:quickr_cscope_keymaps = 1
 endif
@@ -39,13 +51,17 @@ endif
 " s:autoload_db {{
 function! s:autoload_db()
     " Add any database in current directory or any parent
+    call s:debug_echo('Looking for the database file: ' . g:quickr_cscope_db_file)
     let l:db = findfile(g:quickr_cscope_db_file, '.;')
 
     if !empty(l:db)
+        call s:debug_echo('Database file found at: ' . l:db)
         let &csprg=g:quickr_cscope_program
+        call s:debug_echo('Trying to add the database file for program: ' . g:quickr_cscope_program)
         silent! execute "cs add " . l:db
         return 1
     else
+        call s:debug_echo('Database file not found.')
         return 0
     endif
 endfunction
@@ -123,14 +139,15 @@ if g:quickr_cscope_use_qf_g
 else
     nnoremap <silent> <plug>(quickr_cscope_global)    :cs find g <cword><CR>
 endif
-nnoremap <silent> <plug>(quickr_cscope_symbols)   :call <SID>quickr_cscope(expand("<cword>"), "s")<CR>
-nnoremap <silent> <plug>(quickr_cscope_callers)   :call <SID>quickr_cscope(expand("<cword>"), "c")<CR>
-nnoremap <silent> <plug>(quickr_cscope_files)     :call <SID>quickr_cscope(expand("<cfile>:t"), "f")<CR>
-nnoremap <silent> <plug>(quickr_cscope_includes)  :call <SID>quickr_cscope(expand("<cfile>:t"), "i")<CR>
-nnoremap <silent> <plug>(quickr_cscope_text)      :call <SID>quickr_cscope(expand("<cword>"), "t")<CR>
-vnoremap <silent> <plug>(quickr_cscope_text)      :call <SID>quickr_cscope(<SID>get_visual_selection(), "t")<CR>
-nnoremap <silent> <plug>(quickr_cscope_functions) :call <SID>quickr_cscope(expand("<cword>"), "d")<CR>
-nnoremap <silent> <plug>(quickr_cscope_egrep)     :call <SID>quickr_cscope(input('Enter egrep pattern: '), "e")<CR>
+
+nnoremap <silent> <plug>(quickr_cscope_symbols)       :call <SID>quickr_cscope(expand("<cword>"), "s")<CR>
+nnoremap <silent> <plug>(quickr_cscope_callers)       :call <SID>quickr_cscope(expand("<cword>"), "c")<CR>
+nnoremap <silent> <plug>(quickr_cscope_files)         :call <SID>quickr_cscope(expand("<cfile>:t"), "f")<CR>
+nnoremap <silent> <plug>(quickr_cscope_includes)      :call <SID>quickr_cscope(expand("<cfile>:t"), "i")<CR>
+nnoremap <silent> <plug>(quickr_cscope_text)          :call <SID>quickr_cscope(expand("<cword>"), "t")<CR>
+vnoremap <silent> <plug>(quickr_cscope_text)          :call <SID>quickr_cscope(<SID>get_visual_selection(), "t")<CR>
+nnoremap <silent> <plug>(quickr_cscope_functions)     :call <SID>quickr_cscope(expand("<cword>"), "d")<CR>
+nnoremap <silent> <plug>(quickr_cscope_egrep)         :call <SID>quickr_cscope(input('Enter egrep pattern: '), "e")<CR>
 " }}
 
 if g:quickr_cscope_keymaps
