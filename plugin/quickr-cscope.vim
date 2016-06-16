@@ -26,20 +26,24 @@ endif
 if !exists("g:quickr_cscope_prompt_length")
     let g:quickr_cscope_prompt_length = 3
 endif
+
+if !exists("g:quickr_cscope_program")
+    let g:quickr_cscope_program = "cscope"
+endif
+
+if !exists("g:quickr_cscope_db_file")
+    let g:quickr_cscope_db_file = "cscope.out"
+endif
 " }}
 
 " s:autoload_db {{
 function! s:autoload_db()
-    if !empty($CSCOPE_DB)
-        " Add database pointed to by enviorment variable
-        let l:db = $CSCOPE_DB
-    else
-        " Add any database in current directory or any parent
-        let l:db = findfile('cscope.out', '.;')
-    endif
+    " Add any database in current directory or any parent
+    let l:db = findfile(g:quickr_cscope_db_file, '.;')
+
     if !empty(l:db)
-        silent cs reset
-        silent! execute 'cs add' l:db
+        let &csprg=g:quickr_cscope_program
+        silent! execute "cs add " . l:db
         return 1
     else
         return 0

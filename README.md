@@ -21,6 +21,7 @@ your open buffer list.
 * Search term can be navigated using `n` and `N` in quickfix window for faster
   movement
 * Find the Cscope database and load automatically on startup
+* Also works with [GNU GLOBAL](https://www.gnu.org/software/global/manual/global.html) database
 
 ## Installation
 
@@ -82,6 +83,15 @@ For example:
 
 ```vim
 nmap <C-s> <plug>(quickr_cscope_symbols)
+```
+
+### Use GNU GLOBAL instead of Cscope
+If you want to use GNU GLOBAL for searching your codebase, it can be done by 
+define following in your `~/.vimrc`.
+
+```vim
+let g:quickr_cscope_program = "gtags-cscope"
+let g:quickr_cscope_db_file = "GTAGS"
 ```
 
 ### Disable automatic search and load of Cscope database
