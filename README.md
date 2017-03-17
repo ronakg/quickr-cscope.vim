@@ -28,16 +28,16 @@ your open buffer list.
 This plugin follows the standard runtime path structure, and as such it can be
 installed with a variety of plugin managers:
 
-*  [Pathogen](https://github.com/tpope/vim-pathogen)
-    - `git clone https://github.com/ronakg/quickr-cscope.vim ~/.vim/bundle/quickr-cscope.vim`
+*  [Plug](https://github.com/junegunn/vim-plug)
+    - `Plug 'ronakg/quickr-cscope.vim'`
 *  [NeoBundle](https://github.com/Shougo/neobundle.vim)
     - `NeoBundle 'ronakg/quickr-cscope.vim'`
 *  [Vundle](https://github.com/gmarik/vundle)
     - `Plugin 'ronakg/quickr-cscope.vim'`
-*  [Plug](https://github.com/junegunn/vim-plug)
-    - `Plug 'ronakg/quickr-cscope.vim'`
+*  [Pathogen](https://github.com/tpope/vim-pathogen)
+    - `git clone https://github.com/ronakg/quickr-cscope.vim ~/.vim/bundle/quickr-cscope.vim`
 *  Manual
-    - copy all of the files into your `~/.vim` directory
+    - Copy all the files in to your `~/.vim` directory
 
 ## Default Key maps
 
