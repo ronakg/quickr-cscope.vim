@@ -107,7 +107,7 @@ let g:quickr_cscope_autoload_db = 0
 **I'm not able to use `Ctrl-T` to go back in tag stack like I used to before.**
 
 When you use quickfix to view results of a Cscope query, those results
-are not passed to taglist. You need to use `Ctrl-O` (jumplist) to go back to
+are not passed to taglist. You need to use `Ctrl-o` (jumplist) to go back to
 where you were from a result.
 
 **When there are multiple matches for global definition, it doesn't open in quickfix window.**
