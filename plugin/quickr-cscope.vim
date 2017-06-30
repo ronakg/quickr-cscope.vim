@@ -72,7 +72,7 @@ function! s:quickr_cscope(str, query)
     echohl Question
 
     " Mark this position
-    execute "normal mY"
+    execute "normal! mY"
     " Close any open quickfix windows
     cclose
 
@@ -84,33 +84,40 @@ function! s:quickr_cscope(str, query)
         endif
     endif
 
+    " Clear existing quickfix list
     call setqflist([])
 
     let l:cur_file_name=@%
-    echon "Searching for: ".l:search_term
-    silent! execute "cs find ".a:query." ".l:search_term
+    let l:save_cursor = getcurpos()
+    let l:search_query = "cs find " . a:query . " " . l:search_term
+    silent! keepjumps execute l:search_query
 
     let l:n_results = len(getqflist())
-    echon ". Search returned ". l:n_results . " results."
+
+    " Clear previously echoed messages
+    echon "\r\r"
+    echon "Search complete. Command: '" . l:search_query . "' returned " . l:n_results . " results."
+
     if l:n_results > 1
         " If the buffer that cscope jumped to is not same as current file, close the buffer
         if l:cur_file_name != @%
             " Go back to where the command was issued
             execute "normal! `Y"
             " We just jumped back to where the command was issued from. So delete the previous
-            " buffer, which will the the buffer quickfix jumped to
-            bd #
+            " buffer, which will be the buffer quickfix jumped to
+            bdelete #
         endif
+        call setpos('.', l:save_cursor)
 
         " Open quickfix window
         botright cwindow
 
         " Search for the query string for easy navigation using n and N in quickfix
         if a:query != "f"
-            execute "normal /".l:search_term."\<CR>"
+            let @/ = l:search_term
         endif
     endif
-    echohl None
+
 endfunction
 " }}
 
@@ -157,9 +164,17 @@ if g:quickr_cscope_keymaps
     nmap <leader>f <plug>(quickr_cscope_files)
     nmap <leader>i <plug>(quickr_cscope_includes)
     nmap <leader>t <plug>(quickr_cscope_text)
-    vmap <leader>t <plug>(quickr_cscope_text)
     nmap <leader>d <plug>(quickr_cscope_functions)
     nmap <leader>e <plug>(quickr_cscope_egrep)
+
+    vmap <leader>g <plug>(quickr_cscope_global)
+    vmap <leader>s <plug>(quickr_cscope_symbols)
+    vmap <leader>c <plug>(quickr_cscope_callers)
+    vmap <leader>f <plug>(quickr_cscope_files)
+    vmap <leader>i <plug>(quickr_cscope_includes)
+    vmap <leader>t <plug>(quickr_cscope_text)
+    vmap <leader>d <plug>(quickr_cscope_functions)
+    vmap <leader>e <plug>(quickr_cscope_egrep)
 endif
 
 " Use quickfix window for cscope results. Clear previous results before the search.
