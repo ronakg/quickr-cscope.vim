@@ -142,19 +142,28 @@ endfunction
 
 " Plug mappings {{
 if g:quickr_cscope_use_qf_g
-    nnoremap <silent> <plug>(quickr_cscope_global)    :call <SID>quickr_cscope(expand("<cword>"), "g")<CR>
+    nnoremap <silent> <plug>(quickr_cscope_global) :call <SID>quickr_cscope(expand("<cword>"), "g")<CR>
+    vnoremap <silent> <plug>(quickr_cscope_global) :call <SID>quickr_cscope(<SID>get_visual_selection(), "g")<CR>
 else
-    nnoremap <silent> <plug>(quickr_cscope_global)    :cs find g <cword><CR>
+    nnoremap <silent> <plug>(quickr_cscope_global) :cs find g <cword><CR>
+    vnoremap <silent> <plug>(quickr_cscope_global) :cs find g <SID>get_visual_selection()<CR>
 endif
 
-nnoremap <silent> <plug>(quickr_cscope_symbols)       :call <SID>quickr_cscope(expand("<cword>"), "s")<CR>
-nnoremap <silent> <plug>(quickr_cscope_callers)       :call <SID>quickr_cscope(expand("<cword>"), "c")<CR>
-nnoremap <silent> <plug>(quickr_cscope_files)         :call <SID>quickr_cscope(expand("<cfile>:t"), "f")<CR>
-nnoremap <silent> <plug>(quickr_cscope_includes)      :call <SID>quickr_cscope(expand("<cfile>:t"), "i")<CR>
-nnoremap <silent> <plug>(quickr_cscope_text)          :call <SID>quickr_cscope(expand("<cword>"), "t")<CR>
-vnoremap <silent> <plug>(quickr_cscope_text)          :call <SID>quickr_cscope(<SID>get_visual_selection(), "t")<CR>
-nnoremap <silent> <plug>(quickr_cscope_functions)     :call <SID>quickr_cscope(expand("<cword>"), "d")<CR>
-nnoremap <silent> <plug>(quickr_cscope_egrep)         :call <SID>quickr_cscope(input('Enter egrep pattern: '), "e")<CR>
+nnoremap <silent> <plug>(quickr_cscope_symbols)         :call <SID>quickr_cscope(expand("<cword>"), "s")<CR>
+nnoremap <silent> <plug>(quickr_cscope_callers)         :call <SID>quickr_cscope(expand("<cword>"), "c")<CR>
+nnoremap <silent> <plug>(quickr_cscope_files)           :call <SID>quickr_cscope(expand("<cfile>:t"), "f")<CR>
+nnoremap <silent> <plug>(quickr_cscope_includes)        :call <SID>quickr_cscope(expand("<cfile>:t"), "i")<CR>
+nnoremap <silent> <plug>(quickr_cscope_text)            :call <SID>quickr_cscope(expand("<cword>"), "t")<CR>
+nnoremap <silent> <plug>(quickr_cscope_functions)       :call <SID>quickr_cscope(expand("<cword>"), "d")<CR>
+nnoremap <silent> <plug>(quickr_cscope_egrep)           :call <SID>quickr_cscope(input('Enter egrep pattern: '), "e")<CR>
+
+vnoremap <silent> <plug>(quickr_cscope_symbols)         :call <SID>quickr_cscope(<SID>get_visual_selection(), "s")<CR>
+vnoremap <silent> <plug>(quickr_cscope_callers)         :call <SID>quickr_cscope(<SID>get_visual_selection(), "c")<CR>
+vnoremap <silent> <plug>(quickr_cscope_files)           :call <SID>quickr_cscope(<SID>get_visual_selection(), "f")<CR>
+vnoremap <silent> <plug>(quickr_cscope_includes)        :call <SID>quickr_cscope(<SID>get_visual_selection(), "i")<CR>
+vnoremap <silent> <plug>(quickr_cscope_text)            :call <SID>quickr_cscope(<SID>get_visual_selection(), "t")<CR>
+vnoremap <silent> <plug>(quickr_cscope_functions)       :call <SID>quickr_cscope(<SID>get_visual_selection(), "d")<CR>
+vnoremap <silent> <plug>(quickr_cscope_egrep)           :call <SID>quickr_cscope(<SID>get_visual_selection(), "e")<CR>
 " }}
 
 if g:quickr_cscope_keymaps
