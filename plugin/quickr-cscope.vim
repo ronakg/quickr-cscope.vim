@@ -52,13 +52,13 @@ endif
 function! s:autoload_db()
     " Add any database in current directory or any parent
     call s:debug_echo('Looking for the database file: ' . g:quickr_cscope_db_file)
-    let l:db = findfile(g:quickr_cscope_db_file, '.;')
+    let db = findfile(g:quickr_cscope_db_file, '.;')
 
-    if !empty(l:db)
-        call s:debug_echo('Database file found at: ' . l:db)
+    if !empty(db)
+        call s:debug_echo('Database file found at: ' . db)
         let &csprg=g:quickr_cscope_program
         call s:debug_echo('Trying to add the database file for program: ' . g:quickr_cscope_program)
-        silent! execute "cs add " . l:db
+        silent! execute "cs add " . db
         return 1
     else
         call s:debug_echo('Database file not found.')
@@ -78,43 +78,44 @@ function! s:quickr_cscope(str, query)
 
     if g:quickr_cscope_prompt_length > 0
         if strlen(a:str) <= g:quickr_cscope_prompt_length
-            let l:search_term = input("Enter search term: ", a:str)
+            let search_term = input("Enter search term: ", a:str)
         else
-            let l:search_term = a:str
+            let search_term = a:str
         endif
     endif
 
     " Clear existing quickfix list
     call setqflist([])
 
-    let l:cur_file_name=@%
-    let l:save_cursor = getcurpos()
-    let l:search_query = "cs find " . a:query . " " . l:search_term
-    silent! keepjumps execute l:search_query
+    let cur_file_name=@%
+    let view = winsaveview()
 
-    let l:n_results = len(getqflist())
+    let search_query = "cs find " . a:query . " " . search_term
+    silent! keepjumps execute search_query
+
+    let n_results = len(getqflist())
 
     " Clear previously echoed messages
     echon "\r\r"
-    echon "Search complete. Command: '" . l:search_query . "' returned " . l:n_results . " results."
+    echon "Search complete. Command: '" . search_query . "' returned " . n_results . " results."
 
-    if l:n_results > 1
+    if n_results > 1
         " If the buffer that cscope jumped to is not same as current file, close the buffer
-        if l:cur_file_name != @%
+        if cur_file_name != @%
             " Go back to where the command was issued
             execute "normal! `Y"
             " We just jumped back to where the command was issued from. So delete the previous
             " buffer, which will be the buffer quickfix jumped to
             bdelete #
         endif
-        call setpos('.', l:save_cursor)
+        call winrestview(view)
 
         " Open quickfix window
         botright cwindow
 
         " Search for the query string for easy navigation using n and N in quickfix
         if a:query != "f"
-            let @/ = l:search_term
+            let @/ = search_term
         endif
     endif
 
