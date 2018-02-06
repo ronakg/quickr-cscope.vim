@@ -88,7 +88,7 @@ function! s:quickr_cscope(str, query, vert, cmd)
     " Clear existing quickfix list
     call setqflist([])
 
-    let cur_file_name=@%
+    let current_buffers = filter(range(1, bufnr('$')), 'bufwinnr(v:val) != -1')
     let view = winsaveview()
 
     let search_query = a:vert . " " . a:cmd . " find " . a:query . " " . search_term
@@ -101,8 +101,9 @@ function! s:quickr_cscope(str, query, vert, cmd)
     echon "Search complete. Command: '" . search_query . "' returned " . n_results . " results."
 
     if n_results > 1
-        " If the buffer that cscope jumped to is not same as current file, close the buffer
-        if cur_file_name != @%
+        " Close the buffer that cscope jumped to if it wasn't already opened
+        " previously
+        if (index(current_buffers, bufnr('%')) < 0)
             " Go back to where the command was issued
             execute "normal! `Y"
             " We just jumped back to where the command was issued from. So delete the previous
