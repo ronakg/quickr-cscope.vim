@@ -76,7 +76,7 @@ Use following `<plug>`s to your own liking:
 <plug>(quickr_cscope_includes)
 <plug>(quickr_cscope_text)
 <plug>(quickr_cscope_egrep)
-<plug>(quickr_cscope_functions) - Search for function
+<plug>(quickr_cscope_functions)
 ```
 
 There are 2 more additional `<plug>`s available for global defintion to open the result in
