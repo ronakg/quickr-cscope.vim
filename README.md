@@ -5,7 +5,7 @@ Vim plugin for super fast Cscope results navigation using quickfix window.
 `quickr-cscope.vim` provides faster access to
 [Cscope](http://cscope.sourceforge.net/) database search queries within Vim.
 Each type of Cscope query is just a keystroke away. Results are shown in a
-[quickfix](http://vimdoc.sourceforge.net/htmldoc/quickfix.html) window ready for 
+[quickfix](http://vimdoc.sourceforge.net/htmldoc/quickfix.html) window ready for
 faster navigation. Paired with excellent [quickfix-reflector.vim](https://github.com/stefandtw/quickfix-reflector.vim)
 plugin, `quickr-cscope.vim` is a powerful tool for project navigation and
 refactoring.
@@ -69,24 +69,29 @@ let g:quickr_cscope_keymaps = 0
 Use following `<plug>`s to your own liking:
 
 ```vim
-<plug>(quickr_cscope_symbols)
-<plug>(quickr_cscope_global)
-<plug>(quickr_cscope_callers)
-<plug>(quickr_cscope_files)
-<plug>(quickr_cscope_includes)
-<plug>(quickr_cscope_text)
-<plug>(quickr_cscope_egrep)
-<plug>(quickr_cscope_functions)
+<plug>(quickr_cscope_symbols) - Search for symbol
+<plug>(quickr_cscope_global) - Search for global definition
+<plug>(quickr_cscope_callers) - Search for callers
+<plug>(quickr_cscope_files) - Search for file
+<plug>(quickr_cscope_includes) - Search for included header
+<plug>(quickr_cscope_text) - Search for text
+<plug>(quickr_cscope_egrep) - Search for egrep pattern
+<plug>(quickr_cscope_functions) - Search for function
+
+<plug>(quickr_cscope_global_split) - Search for global definition and open in horizontal split
+<plug>(quickr_cscope_global_vert_split) - Search for global definition and open in vertical split
 ```
 
 For example:
 
 ```vim
 nmap <C-s> <plug>(quickr_cscope_symbols)
+nmap <C-gs> <plug>(quickr_cscope_global_split)
+nmap <C-gv> <plug>(quickr_cscope_global_vert_split)
 ```
 
 ### Use GNU GLOBAL instead of Cscope
-If you want to use GNU GLOBAL for searching your codebase, it can be done by 
+If you want to use GNU GLOBAL for searching your codebase, it can be done by
 define following in your `~/.vimrc`.
 
 ```vim
