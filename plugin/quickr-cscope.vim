@@ -88,7 +88,7 @@ function! s:quickr_cscope(str, query, vert, cmd)
     " Clear existing quickfix list
     call setqflist([])
 
-    let current_buffers = filter(range(1, bufnr('$')), 'bufwinnr(v:val) != -1')
+    let current_buffers = filter(range(1, bufnr('$')), 'buflisted(v:val)')
     let view = winsaveview()
 
     let search_query = a:vert . " " . a:cmd . " find " . a:query . " " . search_term
