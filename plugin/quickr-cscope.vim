@@ -197,10 +197,12 @@ if g:quickr_cscope_keymaps
 endif
 
 " Use quickfix window for cscope results. Clear previous results before the search.
-if g:quickr_cscope_use_qf_g
-    set cscopequickfix=g-,s-,c-,f-,i-,t-,d-,e-
-else
-    set cscopequickfix=s-,c-,f-,i-,t-,d-,e-
+if empty(&cscopequickfix)
+    if g:quickr_cscope_use_qf_g
+        set cscopequickfix=g-,s-,c-,f-,i-,t-,d-,e-
+    else
+        set cscopequickfix=s-,c-,f-,i-,t-,d-,e-
+    endif
 endif
 
 " Modeline and Notes {{
