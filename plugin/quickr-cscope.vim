@@ -151,12 +151,12 @@ if g:quickr_cscope_use_qf_g
     nnoremap <silent> <plug>(quickr_cscope_global_vert_split) :call <SID>quickr_cscope(expand("<cword>"), "g", "vert", "scs")<CR>
     vnoremap <silent> <plug>(quickr_cscope_global_vert_split) :call <SID>quickr_cscope(<SID>get_visual_selection(), "g", "vert", "scs")<CR>
 else
-    nnoremap <silent> <plug>(quickr_cscope_global) :cs find g <cword><CR>
-    vnoremap <silent> <plug>(quickr_cscope_global) :cs find g <SID>get_visual_selection()<CR>
-    nnoremap <silent> <plug>(quickr_cscope_global_split) :scs find g <cword><CR>
-    vnoremap <silent> <plug>(quickr_cscope_global_split) :scs find g <SID>get_visual_selection()<CR>
-    nnoremap <silent> <plug>(quickr_cscope_global_vert_split) :vert scs find g <cword><CR>
-    vnoremap <silent> <plug>(quickr_cscope_global_vert_split) :vert scs find g <SID>get_visual_selection()<CR>
+    nnoremap <silent> <plug>(quickr_cscope_global) :cs find g <C-R>=expand("<cword>")<CR><CR>
+    vnoremap <silent> <plug>(quickr_cscope_global) :<C-U>cs find g <C-R>=<SID>get_visual_selection()<CR><CR>
+    nnoremap <silent> <plug>(quickr_cscope_global_split) :scs find g <C-R>=expand("<cword>")<CR><CR>
+    vnoremap <silent> <plug>(quickr_cscope_global_split) :<C-U>scs find g <C-R>=<SID>get_visual_selection()<CR><CR>
+    nnoremap <silent> <plug>(quickr_cscope_global_vert_split) :vert scs find g <C-R>=expand("<cword>")<CR><CR>
+    vnoremap <silent> <plug>(quickr_cscope_global_vert_split) :<C-U>vert scs find g <C-R>=<SID>get_visual_selection()<CR><CR>
 endif
 
 nnoremap <silent> <plug>(quickr_cscope_symbols)         :call <SID>quickr_cscope(expand("<cword>"), "s", "", "cs")<CR>
