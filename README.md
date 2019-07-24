@@ -14,7 +14,7 @@ Biggest advantage of using this plugin is, it prevents the
 quickfix to jump to first result automatically. Thus preventing it to spoil
 your open buffer list.
 
-* Quickly search for symbol, function name, file name under the cursor
+* Quickly search for symbol, function name, file name, assignments under the cursor
 * Quickly search for visually selected text
 * Search results are shown in quickfix window, which is way more flexible for
   navigation compared to Cscope's fixed list
@@ -50,6 +50,7 @@ installed with a variety of plugin managers:
 <leader>t : Search for text matching word under the cursor/visualy selected text
 <leader>e : Enter an egrep patter for searching
 <leader>d : Search all the functions called by funtion name under the cursor
+<leader>a : Search all the places where the symbol under the cursor is assigned a value
 ```
 
 P.S.: `\` is the leader key by default. So the mappings are `\s`, `\g`, `\c`, etc. unless `<leader>` key is mapped to something else.
@@ -77,6 +78,7 @@ Use following `<plug>`s to your own liking:
 <plug>(quickr_cscope_text)
 <plug>(quickr_cscope_egrep)
 <plug>(quickr_cscope_functions)
+<plug>(quickr_cscope_assignments)
 ```
 
 There are 2 more additional `<plug>`s available for global defintion to open the result in

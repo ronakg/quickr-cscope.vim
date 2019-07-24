@@ -166,6 +166,7 @@ nnoremap <silent> <plug>(quickr_cscope_includes)        :call <SID>quickr_cscope
 nnoremap <silent> <plug>(quickr_cscope_text)            :call <SID>quickr_cscope(expand("<cword>"), "t", "", "cs")<CR>
 nnoremap <silent> <plug>(quickr_cscope_functions)       :call <SID>quickr_cscope(expand("<cword>"), "d", "", "cs")<CR>
 nnoremap <silent> <plug>(quickr_cscope_egrep)           :call <SID>quickr_cscope(input('Enter egrep pattern: '), "e", "", "cs")<CR>
+nnoremap <silent> <plug>(quickr_cscope_assignments)     :call <SID>quickr_cscope(expand("<cword>"), "a", "", "cs")<CR>
 
 vnoremap <silent> <plug>(quickr_cscope_symbols)         :call <SID>quickr_cscope(<SID>get_visual_selection(), "s", "", "cs")<CR>
 vnoremap <silent> <plug>(quickr_cscope_callers)         :call <SID>quickr_cscope(<SID>get_visual_selection(), "c", "", "cs")<CR>
@@ -174,6 +175,7 @@ vnoremap <silent> <plug>(quickr_cscope_includes)        :call <SID>quickr_cscope
 vnoremap <silent> <plug>(quickr_cscope_text)            :call <SID>quickr_cscope(<SID>get_visual_selection(), "t", "", "cs")<CR>
 vnoremap <silent> <plug>(quickr_cscope_functions)       :call <SID>quickr_cscope(<SID>get_visual_selection(), "d", "", "cs")<CR>
 vnoremap <silent> <plug>(quickr_cscope_egrep)           :call <SID>quickr_cscope(<SID>get_visual_selection(), "e", "", "cs")<CR>
+vnoremap <silent> <plug>(quickr_cscope_assignments)     :call <SID>quickr_cscope(<SID>get_visual_selection(), "a", "", "cs")<CR>
 " }}
 
 if g:quickr_cscope_keymaps
@@ -185,6 +187,7 @@ if g:quickr_cscope_keymaps
     nmap <leader>t <plug>(quickr_cscope_text)
     nmap <leader>d <plug>(quickr_cscope_functions)
     nmap <leader>e <plug>(quickr_cscope_egrep)
+    nmap <leader>e <plug>(quickr_cscope_assignments)
 
     vmap <leader>g <plug>(quickr_cscope_global)
     vmap <leader>s <plug>(quickr_cscope_symbols)
@@ -194,14 +197,15 @@ if g:quickr_cscope_keymaps
     vmap <leader>t <plug>(quickr_cscope_text)
     vmap <leader>d <plug>(quickr_cscope_functions)
     vmap <leader>e <plug>(quickr_cscope_egrep)
+    vmap <leader>e <plug>(quickr_cscope_assignments)
 endif
 
 " Use quickfix window for cscope results. Clear previous results before the search.
 if empty(&cscopequickfix)
     if g:quickr_cscope_use_qf_g
-        set cscopequickfix=g-,s-,c-,f-,i-,t-,d-,e-
+        set cscopequickfix=g-,s-,c-,f-,i-,t-,d-,e-,a-
     else
-        set cscopequickfix=s-,c-,f-,i-,t-,d-,e-
+        set cscopequickfix=s-,c-,f-,i-,t-,d-,e-,a-
     endif
 endif
 
