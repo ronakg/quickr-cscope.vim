@@ -46,6 +46,10 @@ endif
 if !exists("g:quickr_cscope_db_file")
     let g:quickr_cscope_db_file = "cscope.out"
 endif
+
+if !exists("g:quickr_cscope_show_by_denite")
+    let g:quickr_cscope_show_by_denite = 0
+endif
 " }}
 
 " s:autoload_db {{
@@ -111,8 +115,13 @@ function! s:quickr_cscope(str, query, vert, cmd)
         endif
         call winrestview(view)
 
-        " Open quickfix window
-        botright cwindow
+        if g:quickr_cscope_show_by_denite == 0
+            " Open quickfix window
+            botright cwindow
+        else
+            " Open quickfix by denite
+            Denite -direction=dynamicbottom quickfix
+        endif
 
         " Search for the query string for easy navigation using n and N in quickfix
         if a:query != "f"

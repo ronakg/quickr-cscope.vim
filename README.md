@@ -114,6 +114,14 @@ disable this feature of the plugin by adding following to your `~/.vimrc`.
 let g:quickr_cscope_autoload_db = 0
 ```
 
+### Display result by Denite
+If you want to display quickfix by Denite
+Enable this feature of the plugin by adding following to your `~/.vimrc`.
+
+```vim
+let g:quickr_cscope_show_by_denite = 1
+```
+
 ## FAQ
 
 **I'm not able to use `Ctrl-T` to go back in tag stack like I used to before.**
