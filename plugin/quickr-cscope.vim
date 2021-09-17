@@ -58,7 +58,8 @@ function! s:autoload_db()
         call s:debug_echo('Database file found at: ' . db)
         let &csprg=g:quickr_cscope_program
         call s:debug_echo('Trying to add the database file for program: ' . g:quickr_cscope_program)
-        silent! execute "cs add " . db
+        let root_path = trim(system("git rev-parse --show-toplevel"))
+        execute "cs add " . db  . " " . root_path
         return 1
     else
         call s:debug_echo('Database file not found.')
